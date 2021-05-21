@@ -1,0 +1,17 @@
+div.form-group {
+  position: relative;
+}
+
+span.alert {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  top: -7px;
+  left: 130px;
+  height: 35px;
+}
+
+span.alert p {
+  margin: 0;
+  padding: 0;
+}
