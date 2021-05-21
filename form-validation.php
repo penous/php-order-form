@@ -55,6 +55,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION["zipcode"] = $zipcode;
         }
     }
+
+    if (isset($_POST['products']) && !empty($_POST['products'])) {
+        $totalValue = calculateTotalValue($products, $_POST['products'], $totalValue);
+    }
 }
 
 function test_input($data)

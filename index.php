@@ -35,8 +35,19 @@ if (isset($_GET['food']) && $_GET['food'] === "0") {
 ];
 }
 
+function calculateTotalValue($products, $cart, $totalValue)
+{
+    foreach ($cart as $key) {
+        $totalValue += $products[$key]['price'];
+    }
+    return $totalValue;
+}
+
 $totalValue = 0;
 
 require 'form-validation.php';
 require 'form-view.php';
 whatIsHappening();
+
+
+// var_dump(calculateTotalValue($products, $_POST['products'], $totalValue));
