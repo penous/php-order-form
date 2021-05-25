@@ -37,13 +37,25 @@ if (isset($_GET['food']) && $_GET['food'] === "0") {
 
 function calculateTotalValue($products, $cart, $totalValue)
 {
-    foreach ($cart as $key) {
+    $totalValue += getCookie("totalValue");
+    foreach ($cart as $key => $value) {
         $totalValue += $products[$key]['price'];
     }
+    setcookie("totalValue", "$totalValue");
     return $totalValue;
 }
 
+function getCookie($name)
+{
+    return $_COOKIE[$name];
+}
+
+
 $totalValue = 0;
+
+if (!isset($_COOKIE['totalValue'])) {
+    setcookie("totalValue", "0");
+}
 
 require 'form-validation.php';
 require 'form-view.php';

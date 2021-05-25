@@ -59,6 +59,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['products']) && !empty($_POST['products'])) {
         $totalValue = calculateTotalValue($products, $_POST['products'], $totalValue);
     }
+    header("Location: http://orderform.localhost");
+    exit;
 }
 
 function test_input($data)
