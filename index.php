@@ -41,7 +41,7 @@ function calculateTotalValue($products, $cart, $totalValue)
     foreach ($cart as $key => $value) {
         $totalValue += $products[$key]['price'];
     }
-    setcookie("totalValue", "$totalValue");
+    setcookie("totalValue", "$totalValue", time() + (86400 * 30), "/");
     return $totalValue;
 }
 
@@ -50,16 +50,25 @@ function getCookie($name)
     return $_COOKIE[$name];
 }
 
+function getSessionValue($name)
+{
+    return $_SESSION[$name];
+}
+
 
 $totalValue = 0;
 
 if (!isset($_COOKIE['totalValue'])) {
-    setcookie("totalValue", "0");
+    setcookie("totalValue", "0", time() + (86400 * 30), "/");
 }
 
 require 'form-validation.php';
 require 'form-view.php';
 whatIsHappening();
+
+$tt = new DateTime();
+// var_dump($tt);
+// var_dump($tt->add(3600));
 
 
 // var_dump(calculateTotalValue($products, $_POST['products'], $totalValue));
